@@ -6,11 +6,7 @@ const Landing = ({ history }) => {
       <div className="filter">
         <div className="hero-text">
           <h1>Banter Hero</h1>
-          <h3>Welcome to Banterbury Cathedrall</h3>
-          <div className="hero-social-icons">
-            <i className="fab fa-github" />
-            <i className="fab fa-twitter" />
-          </div>
+          <h3>Welcome to Banterbury Cathedral</h3>
           <button onClick={() => history.push(DASHBOARD)}>
             Start the banter!!
           </button>

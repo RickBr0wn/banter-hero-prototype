@@ -5,17 +5,35 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './Components/App'
 import * as serviceWorker from './serviceWorker'
-import { BrowserRouter } from 'react-router-dom'
+import { createStore, applyMiddleware, compose } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './Store/Reducers/rootReducer'
+import thunk from 'redux-thunk'
+import { reduxFirestore, getFirestore } from 'redux-firestore'
+import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
+import fbConfig from './Store/Config/fbConfig'
+
+const reduxDevToolsExtension =
+  window.devToolsExtension && window.devToolsExtension()
 
 const rootElement = document.getElementById('root')
 
-let render = ( )=> {
-  ReactDOM.render(<BrowserRouter>
+const store = createStore(rootReducer,
+  compose(
+    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
+    reduxFirestore(fbConfig),
+    reactReduxFirebase(fbConfig, { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true }),
+    reduxDevToolsExtension
+  )
+)
+
+let render = () => {
+  ReactDOM.render(<Provider store={store}>
       <App />
-    </BrowserRouter>, rootElement)
+    </Provider>, rootElement)
 }
 
-if(module.hot) {
+if (module.hot) {
   module.hot.accept('./Components/App', () => {
     setTimeout(render)
   })
