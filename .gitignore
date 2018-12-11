@@ -29,3 +29,5 @@ firebase.jsx
 keys.jsx
 
 /Config
+
+/Config/Store
