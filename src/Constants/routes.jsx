@@ -1,0 +1,5 @@
+export const DASHBOARD = '/dashboard'
+export const LANDING_PAGE = '/'
+export const SIGN_UP_PAGE = '/signup'
+export const SIGN_IN_PAGE = '/signin'
+export const SECRET_PAGE = '/secret'
