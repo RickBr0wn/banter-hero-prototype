@@ -1,14 +1,15 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import * as routes from '../../Constants/routes'
 
-const SignedOutLinks = () => {
+const SignedOutLinks = props => {
+  const { toggleActiveClass } = props
   return <ul className="right">
       <li>
-        <NavLink to={routes.SIGN_UP}>Sign Up</NavLink>
+        <Link to={routes.SIGN_UP} onClick={toggleActiveClass}>Sign Up</Link>
       </li>
       <li>
-      <NavLink to={routes.SIGN_IN}>Log In</NavLink>
+      <Link to={routes.SIGN_IN} onClick={toggleActiveClass}>Log In</Link>
       </li>
     </ul>
 }

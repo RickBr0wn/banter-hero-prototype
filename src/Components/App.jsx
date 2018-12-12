@@ -4,8 +4,8 @@ import Navbar from './Navbar/Navbar'
 import * as routes from '../Constants/routes'
 import Landing from './Landing'
 import Dashboard from './Dashboard'
-import SignIn from './SignIn'
-import SignUp from './SignUp'
+import SignIn from './AuthComponents/SignIn'
+import SignUp from './AuthComponents/SignUp'
 import Secret from './Secret'
 
 const App = () => {

@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import './CSS/navbar.css'
 import './CSS/form.css'
+import './CSS/hero.css'
 import App from './Components/App'
 import * as serviceWorker from './serviceWorker'
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -25,7 +26,7 @@ const store = createStore(rootReducer,
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
     reduxFirestore(fbConfig),
     reactReduxFirebase(fbConfig, { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true }),
-    reduxDevToolsExtension
+    // reduxDevToolsExtension
   )
 )
 
