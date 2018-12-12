@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { signOut } from '../../Store/Actions/authActions'
-import * as routes from '../../Constants/routes'
+import { DASHBOARD } from '../../Constants/routes'
 
 const SignedInLinks = props => {
   const { profile, toggleActiveClass, signOut } = props
@@ -12,10 +12,14 @@ const SignedInLinks = props => {
         <Link to="/">New Banter Topic</Link>
       </li>
       <li>
-        <a onClick={() => {
-          signOut()
-          toggleActiveClass()
-        }}>Log Out</a>
+        <a
+          onClick={() => {
+            signOut()
+            toggleActiveClass()
+          }}
+          href={DASHBOARD}>
+          Log Out
+        </a>
       </li>
       <li>
         <Link to="/">{profile.initials}</Link>

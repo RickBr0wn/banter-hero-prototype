@@ -6,6 +6,7 @@ import './index.css'
 import './CSS/navbar.css'
 import './CSS/form.css'
 import './CSS/hero.css'
+import './CSS/dashboard.css'
 import App from './Components/App'
 import * as serviceWorker from './serviceWorker'
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -26,7 +27,9 @@ const store = createStore(rootReducer,
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
     reduxFirestore(fbConfig),
     reactReduxFirebase(fbConfig, { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true }),
-    // reduxDevToolsExtension
+    // comment the line below to test on Safari
+    // remove for production
+    reduxDevToolsExtension
   )
 )
 

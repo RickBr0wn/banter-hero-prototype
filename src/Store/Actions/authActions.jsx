@@ -1,3 +1,11 @@
+import {
+  LOGIN_ERROR,
+  LOGIN_SUCCESS,
+  SIGNOUT_SUCCESS,
+  SIGNUP_SUCCESS,
+  SIGNUP_ERROR,
+} from '../../Constants/auth'
+
 export const signIn = credentials => async (
   dispatch,
   getState,
@@ -7,8 +15,8 @@ export const signIn = credentials => async (
   firebase
     .auth()
     .signInWithEmailAndPassword(credentials.email, credentials.password)
-    .then(() => dispatch({ type: 'LOGIN_SUCCESS' }))
-    .catch(err => dispatch({ type: 'LOGIN_ERROR', err }))
+    .then(() => dispatch({ type: LOGIN_SUCCESS }))
+    .catch(err => dispatch({ type: LOGIN_ERROR, err }))
 }
 
 export const signOut = () => async (dispatch, getState, { getFirebase }) => {
@@ -16,7 +24,7 @@ export const signOut = () => async (dispatch, getState, { getFirebase }) => {
   firebase
     .auth()
     .signOut()
-    .then(() => dispatch({ type: 'SIGNOUT_SUCESS' }))
+    .then(() => dispatch({ type: SIGNOUT_SUCCESS }))
 }
 
 export const signUp = newUser => async (
@@ -40,6 +48,6 @@ export const signUp = newUser => async (
         .doc(response.user.uid)
         .set(obj)
     )
-    .then(() => dispatch({ type: 'SIGNUP_SUCCESS' }))
-    .catch(err => dispatch({ type: 'SIGNUP_ERROR', err }))
+    .then(() => dispatch({ type: SIGNUP_SUCCESS }))
+    .catch(err => dispatch({ type: SIGNUP_ERROR, err }))
 }

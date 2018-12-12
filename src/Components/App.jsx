@@ -1,12 +1,11 @@
 import React from 'react'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './Navbar/Navbar'
-import * as routes from '../Constants/routes'
+import { DASHBOARD, SIGN_UP, SIGN_IN } from '../Constants/routes'
 import Landing from './Landing'
 import Dashboard from './Dashboard'
 import SignIn from './AuthComponents/SignIn'
 import SignUp from './AuthComponents/SignUp'
-import Secret from './Secret'
 
 const App = () => {
   return <BrowserRouter>
@@ -17,10 +16,9 @@ const App = () => {
         <Route path="/(.+)" render={() => <div>
               <Navbar />
               <Switch>
-                <Route path={routes.DASHBOARD} component={Dashboard} />
-                <Route path={routes.SIGN_UP} component={SignUp} />
-                <Route path={routes.SIGN_IN} component={SignIn} />
-                <Route path={routes.SECRET} component={Secret} />
+                <Route path={DASHBOARD} component={Dashboard} />
+                <Route path={SIGN_UP} component={SignUp} />
+                <Route path={SIGN_IN} component={SignIn} />
               </Switch>
             </div>} />
       </div>
