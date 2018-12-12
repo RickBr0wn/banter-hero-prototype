@@ -1,0 +1,75 @@
+.hero-image {
+  height: 100vh;
+  background: url('../Images/hero-image.jpg');
+  background-size: cover;
+}
+
+.filter {
+  height: 100vh;
+  background: rgba(255, 238, 0, 0.7);
+  background-size: cover;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  position: absolute;
+  top: 45%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+
+/* use up to 18vw? on media query (small screen) */
+.hero-text h1 {
+  color: #fff;
+  font-size: 12vw; 
+  line-height: 0.8;
+}
+
+.hero-text .hero-button {
+  position: relative;
+  top: -7vw;
+  left: 0.8vw;
+  background: #fff000;
+  border: none;
+  box-shadow: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: center;
+  height: 50px;
+  color: #000;
+  line-height: 50px;
+  font-size: 20px;
+}
+
+.hero-text .hero-button:hover {
+  background: #ffc107;
+}
+
+@media (max-width: 700px) {
+  .hero-text h1 {
+    font-size: 70px;
+  }
+
+  .hero-text .hero-button {
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 450px) {
+  .hero-text h1 {
+    font-size: 70px;
+  }
+
+  .hero-text .hero-button {
+    top: -10vw;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+  }
+}
