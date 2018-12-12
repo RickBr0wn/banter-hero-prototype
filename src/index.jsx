@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom'
 // import 'semantic-ui-css/semantic.min.css'
 // import '../semantic/dist/semantic.min.css'
 import './index.css'
+import './CSS/navbar.css'
+import './CSS/form.css'
 import App from './Components/App'
 import * as serviceWorker from './serviceWorker'
 import { createStore, applyMiddleware, compose } from 'redux'
@@ -45,3 +47,6 @@ render()
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
 serviceWorker.unregister()
+
+
+// https://luisalonso.me/wp-content/uploads/2016/05/banter-top-1296x650.jpg
