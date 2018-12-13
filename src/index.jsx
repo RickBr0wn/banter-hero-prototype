@@ -29,7 +29,7 @@ const store = createStore(rootReducer,
     reactReduxFirebase(fbConfig, { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true }),
     // comment the line below to test on Safari
     // remove for production
-    reduxDevToolsExtension
+    // reduxDevToolsExtension
   )
 )
 

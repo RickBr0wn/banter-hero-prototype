@@ -11,12 +11,26 @@ body {
 .container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding-top: 150px;
+  padding: 150px;
 }
 
 h1 {
   font-size: 40px;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .container {
+    padding: 75px;
+  }
+}
+
+@media (max-width: 570px) {
+  .container {
+    margin-top: 70px;
+    padding: 0;
+  }
 }
