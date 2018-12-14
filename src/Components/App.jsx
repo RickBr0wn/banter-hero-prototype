@@ -8,21 +8,28 @@ import SignIn from './AuthComponents/SignIn'
 import SignUp from './AuthComponents/SignUp'
 
 const App = () => {
-  return <BrowserRouter>
+  return (
+    <BrowserRouter>
       <div>
         <Switch>
           <Route exact path="/" component={Landing} />
         </Switch>
-        <Route path="/(.+)" render={() => <div>
+        <Route
+          path="/(.+)"
+          render={() => (
+            <div>
               <Navbar />
               <Switch>
                 <Route path={DASHBOARD} component={Dashboard} />
                 <Route path={SIGN_UP} component={SignUp} />
                 <Route path={SIGN_IN} component={SignIn} />
               </Switch>
-            </div>} />
+            </div>
+          )}
+        />
       </div>
     </BrowserRouter>
+  )
 }
 
 export default App

@@ -4,12 +4,12 @@ import 'firebase/auth'
 
 // Initialize Firebase
 var config = {
-  apiKey: 'AIzaSyALkIJ1ZMKyr4iwPhq5x91IzUIc1wk-Z5I',
-  authDomain: 'fir-sandbox-5dfb0.firebaseapp.com',
-  databaseURL: 'https://fir-sandbox-5dfb0.firebaseio.com',
-  projectId: 'fir-sandbox-5dfb0',
-  storageBucket: 'fir-sandbox-5dfb0.appspot.com',
-  messagingSenderId: '109795635169',
+  apiKey: 'AIzaSyC4yoc1B4lit_H6H0daKKybIHLXyFh8AH4',
+  authDomain: 'mario-planner.firebaseapp.com',
+  databaseURL: 'https://mario-planner.firebaseio.com',
+  projectId: 'mario-planner',
+  storageBucket: 'mario-planner.appspot.com',
+  messagingSenderId: '668089638177',
 }
 
 firebase.initializeApp(config)

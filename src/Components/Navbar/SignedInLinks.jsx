@@ -22,7 +22,7 @@ const SignedInLinks = props => {
         </a>
       </li>
       <li>
-        <Link to="/">{profile.initials}</Link>
+        <Link to="/" className="user-avatar">{profile.initials}</Link>
       </li>
     </ul>
   )
