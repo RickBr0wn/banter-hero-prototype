@@ -59,6 +59,12 @@ header nav ul li a.active {
   display: none;
 }
 
+.user-avatar {
+  font-weight: 700;
+  letter-spacing: 2px;
+  font-size: 20px;
+}
+
 @media (max-width: 991px) {
   header {
     padding: 0 20px;

@@ -20,37 +20,51 @@ import fbConfig from './Store/Config/fbConfig'
 const reduxDevToolsExtension =
   window.devToolsExtension && window.devToolsExtension()
 
-const rootElement = document.getElementById('root')
+// const rootElement = document.getElementById('root')
 
-const store = createStore(rootReducer,
+const store = createStore(
+  rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
     reduxFirestore(fbConfig),
-    reactReduxFirebase(fbConfig, { useFirestoreForProfile: true, userProfile: 'users', attachAuthIsReady: true }),
-    // comment the line below to test on Safari
-    // remove for production
-    // reduxDevToolsExtension
+    reactReduxFirebase(fbConfig, {
+      useFirestoreForProfile: true,
+      userProfile: 'users',
+      attachAuthIsReady: true,
+    }),
+    reduxDevToolsExtension
   )
 )
 
-let render = () => {
-  ReactDOM.render(<Provider store={store}>
+store.firebaseAuthIsReady.then(() => {
+  // let render = () => {
+  //   ReactDOM.render(
+  //     <Provider store={store}>
+  //       <App />
+  //     </Provider>,
+  //     rootElement
+  //   )
+  // }
+
+  // if (module.hot) {
+  //   module.hot.accept('./Components/App', () => {
+  //     setTimeout(render)
+  //   })
+  // }
+
+  // render()
+
+  ReactDOM.render(
+    <Provider store={store}>
       <App />
-    </Provider>, rootElement)
-}
+    </Provider>,
+    document.getElementById('root')
+  )
 
-if (module.hot) {
-  module.hot.accept('./Components/App', () => {
-    setTimeout(render)
-  })
-}
-
-render()
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister()
-
+  // If you want your app to work offline and load faster, you can change
+  // unregister() to register() below. Note this comes with some pitfalls.
+  // Learn more about service workers: http://bit.ly/CRA-PWA
+  serviceWorker.unregister()
+})
 
 // https://luisalonso.me/wp-content/uploads/2016/05/banter-top-1296x650.jpg

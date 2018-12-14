@@ -1,5 +1,5 @@
 .dashboard {
-  max-width: 900px;
+  width: 900px;
   background: #fff;
   padding: 20px 110px 45px;
   border-radius: 10px;
@@ -27,11 +27,19 @@
   font-size: 16px;
 }
 
-@media (max-width: 900px) {
-
+@media (max-width: 1200px) {
+  .dashboard {
+    max-width: 600px;
+  }
 }
 
-@media (max-width: 570px) {
+@media (max-width: 900px) {
+  .dashboard {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
   .dashboard {
     border-radius: 0;
     padding: 20px 30px 40px 30px;
