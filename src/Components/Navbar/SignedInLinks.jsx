@@ -8,7 +8,7 @@ const SignedInLinks = props => {
   const { profile, toggleActiveClass, signOut } = props
   return <ul>
       <li>
-        <Link to={CREATE_PROJECT}>New Banter Topic</Link>
+      <Link to={CREATE_PROJECT} onClick={toggleActiveClass}>New Banter Topic</Link>
       </li>
       <li>
         <a onClick={() => {
