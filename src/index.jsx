@@ -20,7 +20,7 @@ import fbConfig from './Store/Config/fbConfig'
 const reduxDevToolsExtension =
   window.devToolsExtension && window.devToolsExtension()
 
-// const rootElement = document.getElementById('root')
+const rootElement = document.getElementById('root')
 
 const store = createStore(
   rootReducer,
@@ -37,30 +37,22 @@ const store = createStore(
 )
 
 store.firebaseAuthIsReady.then(() => {
-  // let render = () => {
-  //   ReactDOM.render(
-  //     <Provider store={store}>
-  //       <App />
-  //     </Provider>,
-  //     rootElement
-  //   )
-  // }
+  let render = () => {
+    ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      rootElement
+    )
+  }
 
-  // if (module.hot) {
-  //   module.hot.accept('./Components/App', () => {
-  //     setTimeout(render)
-  //   })
-  // }
+  if (module.hot) {
+    module.hot.accept('./Components/App', () => {
+      setTimeout(render)
+    })
+  }
 
-  // render()
-
-  ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.getElementById('root')
-  )
-
+  render()
   // If you want your app to work offline and load faster, you can change
   // unregister() to register() below. Note this comes with some pitfalls.
   // Learn more about service workers: http://bit.ly/CRA-PWA
