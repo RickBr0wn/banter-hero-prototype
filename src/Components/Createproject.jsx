@@ -6,12 +6,12 @@ import { Redirect } from 'react-router-dom'
 class CreateProject extends Component {
   state = {
     title: '',
-    content: ''
+    content: '',
   }
 
   handleChange = e => {
     this.setState({
-      [e.target.id]: e.target.value
+      [e.target.id]: e.target.value,
     })
   }
 
@@ -34,11 +34,9 @@ class CreateProject extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    auth: state.firebase.auth,
-  }
-}
+const mapStateToProps = state => ({
+  auth: state.firebase.auth,
+})
 
 const mapDispatchToProps = dispatch => {
   return {
