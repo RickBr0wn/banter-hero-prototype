@@ -3,7 +3,9 @@ import moment from 'moment'
 
 const ProjectSummary = ({ project, id }) => {
   const dateAndTime = moment(project.createdAt.toDate()).calendar()
-  return <div className="dashboard hover">
+  return (
+    <div className="dashboard hover">
+      <h5>// projectSummary</h5>
       <h1>{project.title}</h1>
       <p>{project.content}</p>
       <div className="icon-container">
@@ -19,11 +21,12 @@ const ProjectSummary = ({ project, id }) => {
           <i className="fas fa-comments" />
           <span>89</span>
         </div>
-        <div>
+        <div style={{ width: '300px' }}>
           <p>{dateAndTime}</p>
         </div>
       </div>
     </div>
+  )
 }
 
 export default ProjectSummary

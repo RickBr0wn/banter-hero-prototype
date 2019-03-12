@@ -8,9 +8,9 @@ import ProjectList from './ProjectList'
 export class Dashboard extends Component {
   render() {
     const { projects, auth } = this.props
-    console.log(auth)
     return (
       <div className="container">
+        <h5>// dashboard</h5>
         <ProjectList projects={projects} />
       </div>
     )
@@ -24,11 +24,11 @@ const mapStateToProps = state => {
     notifications: state.firestore.ordered.notifications,
   }
 }
-  
+
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     { collection: 'projects', orderBy: ['createdAt', 'desc'] },
-    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] }
+    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc'] },
   ])
 )(Dashboard)
