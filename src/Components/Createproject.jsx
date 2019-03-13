@@ -8,6 +8,7 @@ class CreateProject extends Component {
   state = {
     title: '',
     content: '',
+    banter: '',
   }
 
   handleChange = e => {
@@ -18,9 +19,10 @@ class CreateProject extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log(this.state)
-    this.props.createProject(this.state)
-    this.props.history.push(DASHBOARD)
+    if (this.state.title && this.state.content && this.state.banter) {
+      this.props.createProject(this.state)
+      this.props.history.push(DASHBOARD)
+    }
   }
 
   render() {
@@ -28,19 +30,37 @@ class CreateProject extends Component {
     if (!auth.uid) return <Redirect to="/signin" />
     return (
       <div className="container">
-        <div className="dashboard">
-          <h1>Create a new Banter Topic</h1>
-          <div>
-            <h2>New Topic </h2>
-            <label>Title </label>
-            <input type="text" id="title" onChange={this.handleChange} />
-            <br />
-            <label>Description </label>
-            <input type="text" id="content" onChange={this.handleChange} />
-            <br />
-
-            <button onClick={this.handleSubmit}>GO!</button>
+        // createProject
+        <div className="login">
+          <h1>New Topic </h1>
+          <div className="input-group">
+            <input
+              type="text"
+              id="title"
+              required="required"
+              onChange={this.handleChange}
+            />
+            <span>Title </span>
           </div>
+          <div className="input-group">
+            <input
+              type="text"
+              id="content"
+              required="required"
+              onChange={this.handleChange}
+            />
+            <span>Description </span>
+          </div>
+          <div className="input-group">
+            <input
+              type="text"
+              id="content"
+              required="required"
+              onChange={this.handleChange}
+            />
+            <span>Initial banter (optional)</span>
+          </div>
+          <button onClick={this.handleSubmit}>GO!</button>
         </div>
       </div>
     )
