@@ -19,7 +19,7 @@ class CreateProject extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    if (this.state.title && this.state.content && this.state.banter) {
+    if (this.state.title && this.state.content) {
       this.props.createProject(this.state)
       this.props.history.push(DASHBOARD)
     }
