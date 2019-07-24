@@ -1,3 +1,5 @@
+import uuid from 'react-uuid'
+
 export const createConversation = (conversation, id) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     const firestore = getFirestore()
@@ -5,6 +7,7 @@ export const createConversation = (conversation, id) => {
     const authorId = getState().firebase.auth.uid
     const oldConversation = getState().firestore.data.projects[id].conversation
     const newConversation = {
+      id: uuid(),
       comment: conversation,
       authorFirstName: profile.firstName,
       authorLastName: profile.lastName,

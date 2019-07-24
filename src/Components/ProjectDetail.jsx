@@ -4,22 +4,26 @@ import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
 import { createConversation } from '../Store/Actions/conversationActions'
-// import moment from 'moment'
+import moment from 'moment'
 
 const ProjectDetails = props => {
   const { project, auth, id, onCreateConversation } = props
   console.log(project)
   const [conversation, setConversation] = React.useState('')
-  // const dateAndTime = moment(project.createdAt.toDate()).calendar()
+
   if (!auth.uid) return <Redirect to="/signin" />
   if (project) {
+    const dateAndTime = moment(project.createdAt.toDate()).calendar()
     return (
       <div className="container" key={id}>
         <h5>** projectDetail</h5>
         <div className="dashboard">
           <h1>{project.title}</h1>
-          <p>{project.content}</p>
-
+          <p style={{ fontSize: '14px' }}>
+            Here's your starter for ten:{' '}
+            <span style={{ fontStyle: 'italic' }}>{project.content}</span>
+          </p>
+          <p>{dateAndTime}</p>
           <div className="icon-container">
             <div className="unit">
               <i className="fas fa-user-friends" />
@@ -37,9 +41,26 @@ const ProjectDetails = props => {
           <div>
             <h5>Conversation</h5>
             {project.conversation &&
-              project.conversation.map(comment => (
-                <p key={Math.random()}>item</p>
-              ))}
+              project.conversation.map(comment => {
+                const dateAndTime = moment(
+                  comment.createdAt.toDate()
+                ).calendar()
+                return (
+                  <div key={comment.id}>
+                    <div>
+                      <span>{`${comment.authorFirstName[0]}${
+                        comment.authorLastName[0]
+                      }: ${comment.comment} `}</span>
+                      <i
+                        className="fas fa-thumbs-up"
+                        style={{ marginRight: '10px', marginLeft: '50px' }}
+                      />
+                      <i className="fas fa-thumbs-down" />
+                    </div>
+                    <p style={{ fontSize: '10px' }}>{dateAndTime}</p>
+                  </div>
+                )
+              })}
             <div>
               <h5>Banter Entry</h5>
               <form
@@ -94,11 +115,3 @@ export default compose(
   ),
   firestoreConnect([{ collection: 'projects' }])
 )(ProjectDetails)
-
-/**
-|--------------------------------------------------
-| TODO: add an id to the create conversation action
-| that will allow me to fix the key error 
-| Thn create a component for each comment
-|--------------------------------------------------
-*/
