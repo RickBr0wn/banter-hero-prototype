@@ -8,6 +8,7 @@ import { createConversation } from '../Store/Actions/conversationActions'
 
 const ProjectDetails = props => {
   const { project, auth, id, onCreateConversation } = props
+  console.log(project)
   const [conversation, setConversation] = React.useState('')
   // const dateAndTime = moment(project.createdAt.toDate()).calendar()
   if (!auth.uid) return <Redirect to="/signin" />
@@ -18,33 +19,39 @@ const ProjectDetails = props => {
         <div className="dashboard">
           <h1>{project.title}</h1>
           <p>{project.content}</p>
+
           <div className="icon-container">
-            <div>
+            <div className="unit">
               <i className="fas fa-user-friends" />
               <span>16</span>
             </div>
-            <div>
+            <div className="unit">
               <i className="fas fa-user" />
               <span>8</span>
             </div>
-            <div>
+            <div className="unit">
               <i className="fas fa-comments" />
-              <span>89</span>
+              <span>{project.conversation.length}</span>
             </div>
           </div>
           <div>
             <h5>Conversation</h5>
-            <div>Map thru conversation here..</div>
+            {project.conversation &&
+              project.conversation.map(comment => (
+                <p key={Math.random()}>item</p>
+              ))}
             <div>
               <h5>Banter Entry</h5>
               <form
                 onSubmit={e => {
                   e.preventDefault()
                   onCreateConversation(conversation, id)
+                  setConversation('')
                 }}>
                 <textarea
                   name="body"
                   onChange={e => setConversation(e.target.value)}
+                  value={conversation}
                 />
                 <button type="submit">GO</button>
               </form>
@@ -87,3 +94,11 @@ export default compose(
   ),
   firestoreConnect([{ collection: 'projects' }])
 )(ProjectDetails)
+
+/**
+|--------------------------------------------------
+| TODO: add an id to the create conversation action
+| that will allow me to fix the key error 
+| Thn create a component for each comment
+|--------------------------------------------------
+*/

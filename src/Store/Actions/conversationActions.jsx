@@ -11,16 +11,16 @@ export const createConversation = (conversation, id) => {
       authorId: authorId,
       createdAt: new Date(),
     }
+
     firestore
       .collection('projects')
       .doc(id)
-      .set({
-        conversation: [...oldConversation, newConversation],
-        authorFirstName: profile.firstName,
-        authorLastName: profile.lastName,
-        authorId: authorId,
-        createdAt: new Date(),
-      })
+      .set(
+        {
+          conversation: [...oldConversation, newConversation],
+        },
+        { merge: true }
+      )
       .then(() => {
         dispatch({ type: 'CREATE_CONVERSATION', conversation })
       })
