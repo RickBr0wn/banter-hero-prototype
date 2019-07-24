@@ -3,17 +3,18 @@ import { connect } from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase'
 import { compose } from 'redux'
 import { Redirect } from 'react-router-dom'
-import moment from 'moment'
+import { createConversation } from '../Store/Actions/conversationActions'
+// import moment from 'moment'
 
 const ProjectDetails = props => {
-  const { project, auth, id } = props
-  console.log(props)
-  const dateAndTime = moment(project.createdAt.toDate()).calendar()
+  const { project, auth, id, onCreateConversation } = props
+  const [conversation, setConversation] = React.useState('')
+  // const dateAndTime = moment(project.createdAt.toDate()).calendar()
   if (!auth.uid) return <Redirect to="/signin" />
   if (project) {
     return (
       <div className="container" key={id}>
-        <h5>// projectDetail</h5>
+        <h5>** projectDetail</h5>
         <div className="dashboard">
           <h1>{project.title}</h1>
           <p>{project.content}</p>
@@ -36,8 +37,17 @@ const ProjectDetails = props => {
             <div>Map thru conversation here..</div>
             <div>
               <h5>Banter Entry</h5>
-              <textarea name="body" />
-              <button>GO</button>
+              <form
+                onSubmit={e => {
+                  e.preventDefault()
+                  onCreateConversation(conversation, id)
+                }}>
+                <textarea
+                  name="body"
+                  onChange={e => setConversation(e.target.value)}
+                />
+                <button type="submit">GO</button>
+              </form>
             </div>
           </div>
         </div>
@@ -63,7 +73,17 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
+const mapDispatchToProps = dispatch => {
+  return {
+    onCreateConversation: (conversation, id) =>
+      dispatch(createConversation(conversation, id)),
+  }
+}
+
 export default compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
   firestoreConnect([{ collection: 'projects' }])
 )(ProjectDetails)

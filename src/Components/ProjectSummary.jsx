@@ -5,7 +5,7 @@ const ProjectSummary = ({ project, id }) => {
   const dateAndTime = moment(project.createdAt.toDate()).calendar()
   return (
     <div className="dashboard hover">
-      <h5>// projectSummary</h5>
+      <h5>** projectSummary</h5>
       <h1>{project.title}</h1>
       <p>{project.content}</p>
       <div className="icon-container">

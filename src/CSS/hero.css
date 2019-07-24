@@ -45,6 +45,13 @@
   font-size: 20px;
 }
 
+.hero-button {
+  border-radius: 10px;
+  padding: 10px;
+  height: fit-content !important;
+  width: 500px;
+}
+
 .hero-text .hero-button:hover {
   background: #ffc107;
 }
@@ -58,6 +65,10 @@
     height: 40px;
     line-height: 40px;
     font-size: 16px;
+  }
+
+  .hero-button {
+    width: 300px;
   }
 }
 

@@ -12,6 +12,7 @@ export const createProject = project => {
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorId,
+        conversation: [],
         createdAt: new Date(),
       })
       .then(() => {

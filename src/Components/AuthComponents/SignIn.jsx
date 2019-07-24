@@ -53,7 +53,7 @@ class SignIn extends Component {
               <a href="/">
                 Forgot Password <span>Click Here</span>
               </a>
-              {authError ? <p>{authError}</p> : null}
+              {authError ? <p style={{ color: 'red' }}>{authError}</p> : null}
             </div>
           </form>
         </div>
