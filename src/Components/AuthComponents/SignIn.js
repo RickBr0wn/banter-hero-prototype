@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { signIn } from '../../Store/Actions/authActions'
 import { Redirect } from 'react-router-dom'
@@ -24,12 +25,13 @@ class SignIn extends Component {
     const { authError, auth } = this.props
     if (auth.uid) return <Redirect to="/dashboard" />
     return (
-      <div className="container">
+      <div data-test="sign-in-component" className="container">
         <div className="login">
           <form onSubmit={this.handleSubmit}>
             <h1>Sign In</h1>
             <div className="input-group">
               <input
+                data-test="sign-in-input"
                 type="email"
                 id="email"
                 onChange={this.handleChange}
@@ -39,6 +41,7 @@ class SignIn extends Component {
             </div>
             <div className="input-group">
               <input
+                data-test="sign-in-input"
                 type="password"
                 id="password"
                 onChange={this.handleChange}
@@ -73,6 +76,11 @@ const mapDispatchToProps = dispatch => {
   return {
     signIn: credentials => dispatch(signIn(credentials)),
   }
+}
+
+SignIn.propTypes = {
+  authError: PropTypes.string,
+  auth: PropTypes.object.isRequired,
 }
 
 export default connect(
