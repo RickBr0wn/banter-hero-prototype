@@ -1,27 +1,27 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { signIn } from '../../Store/Actions/authActions'
+import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { signUp } from '../../Store/Actions/authActions'
 
-const SignIn = ({ authError, auth, onSignIn }) => {
+const SignUp = ({ auth, authError, onSignUp }) => {
   const [email, setEmail] = React.useState('')
   const [password, setPassword] = React.useState('')
+  const [firstName, setFirstName] = React.useState('')
+  const [lastName, setLastName] = React.useState('')
 
   if (auth.uid) return <Redirect to="/dashboard" />
 
   return (
-    <div data-test="sign-in-component" className="container">
+    <div className="container">
       <div className="login">
         <form
           onSubmit={e => {
             e.preventDefault()
-            onSignIn({ email, password })
+            onSignUp({ email, password, firstName, lastName })
           }}>
-          <h1>Sign In</h1>
+          <h1>Sign Up</h1>
           <div className="input-group">
             <input
-              data-test="sign-in-input"
               type="email"
               id="email"
               onChange={e => setEmail(e.target.value)}
@@ -31,7 +31,6 @@ const SignIn = ({ authError, auth, onSignIn }) => {
           </div>
           <div className="input-group">
             <input
-              data-test="sign-in-input"
               type="password"
               id="password"
               onChange={e => setPassword(e.target.value)}
@@ -40,14 +39,27 @@ const SignIn = ({ authError, auth, onSignIn }) => {
             <span>Password</span>
           </div>
           <div className="input-group">
+            <input
+              type="text"
+              id="firstName"
+              onChange={e => setFirstName(e.target.value)}
+              required="required"
+            />
+            <span>First Name</span>
+          </div>
+          <div className="input-group">
+            <input
+              type="text"
+              id="lastName"
+              onChange={e => setLastName(e.target.value)}
+              required="required"
+            />
+            <span>Last Name</span>
+          </div>
+          <div className="input-group">
             <input type="submit" value="Submit" />
           </div>
-          <div>
-            <a href="/">
-              Forgot Password <span>Click Here</span>
-            </a>
-            {authError ? <p style={{ color: 'red' }}>{authError}</p> : null}
-          </div>
+          <div>{authError ? <p>{authError}</p> : null}</div>
         </form>
       </div>
     </div>
@@ -56,23 +68,18 @@ const SignIn = ({ authError, auth, onSignIn }) => {
 
 const mapStateToProps = state => {
   return {
-    authError: state.auth.authError,
     auth: state.firebase.auth,
+    authError: state.auth.authError,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSignIn: credentials => dispatch(signIn(credentials)),
+    onSignUp: newUser => dispatch(signUp(newUser)),
   }
-}
-
-SignIn.propTypes = {
-  authError: PropTypes.string,
-  auth: PropTypes.object.isRequired,
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignIn)
+)(SignUp)
