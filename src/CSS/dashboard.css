@@ -14,7 +14,7 @@
 .dashboard .icon-container {
   display: flex;
   justify-content: space-between;
-  width: 35%;
+  width: 50%;
   font-size: 20px;
   box-sizing: border-box;
 }

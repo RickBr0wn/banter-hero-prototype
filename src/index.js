@@ -5,8 +5,8 @@ import './CSS/navbar.css'
 import './CSS/form.css'
 import './CSS/hero.css'
 import './CSS/dashboard.css'
+import './CSS/projectDetail.css'
 import App from './Components/App'
-import * as serviceWorker from './serviceWorker'
 import { createStore, applyMiddleware, compose } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './Store/Reducers/rootReducer'
@@ -16,7 +16,7 @@ import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from './Store/Config/fbConfig'
 
 const reduxDevToolsExtension =
-  window.devToolsExtension && window.devToolsExtension()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 const rootElement = document.getElementById('root')
 
@@ -51,10 +51,6 @@ store.firebaseAuthIsReady.then(() => {
   }
 
   render()
-  // If you want your app to work offline and load faster, you can change
-  // unregister() to register() below. Note this comes with some pitfalls.
-  // Learn more about service workers: http://bit.ly/CRA-PWA
-  serviceWorker.unregister()
 })
 
 // https://luisalonso.me/wp-content/uploads/2016/05/banter-top-1296x650.jpg

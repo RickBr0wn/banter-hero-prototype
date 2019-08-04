@@ -1,6 +1,6 @@
 import React from 'react'
 import { DASHBOARD } from '../Constants/routes'
-import heroImage from '../Images/hero-image.jpg'
+// import heroImage from '../Images/hero-image.jpg'
 
 const Landing = ({ history }) => {
   return (
@@ -8,10 +8,9 @@ const Landing = ({ history }) => {
       <div className="filter">
         <div className="hero-text">
           <h1>Banter Hero</h1>
-          <div
-            className="hero-button"
-            onClick={() => history.push(DASHBOARD)}
-          >Lets All Laugh Together</div>
+          <div className="hero-button" onClick={() => history.push(DASHBOARD)}>
+            Lets All Laugh Together
+          </div>
         </div>
       </div>
     </div>

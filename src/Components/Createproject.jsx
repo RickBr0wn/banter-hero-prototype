@@ -30,7 +30,7 @@ class CreateProject extends Component {
     if (!auth.uid) return <Redirect to="/signin" />
     return (
       <div className="container">
-        // createProject
+        ** createProject
         <div className="login">
           <h1>New Topic </h1>
           <div className="input-group">

@@ -5,25 +5,27 @@ const ProjectSummary = ({ project, id }) => {
   const dateAndTime = moment(project.createdAt.toDate()).calendar()
   return (
     <div className="dashboard hover">
-      <h5>// projectSummary</h5>
+      <h5>** projectSummary</h5>
       <h1>{project.title}</h1>
-      <p>{project.content}</p>
+      <p style={{ fontSize: '14px' }}>
+        <span style={{ fontStyle: 'italic' }}>{project.content}</span>
+      </p>
       <div className="icon-container">
-        <div>
+        <div style={{ display: 'flex', marginRight: '20px' }}>
           <i className="fas fa-user-friends" />
           <span>16</span>
         </div>
-        <div>
+        <div style={{ display: 'flex', marginRight: '20px' }}>
           <i className="fas fa-user" />
           <span>8</span>
         </div>
-        <div>
+        <div style={{ display: 'flex', marginRight: '20px' }}>
           <i className="fas fa-comments" />
-          <span>89</span>
+          <span>{project.conversation.length}</span>
         </div>
-        <div style={{ width: '300px' }}>
-          <p>{dateAndTime}</p>
-        </div>
+      </div>
+      <div>
+        <p>{dateAndTime}</p>
       </div>
     </div>
   )
