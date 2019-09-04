@@ -70,6 +70,7 @@ const mapDispatchToProps = dispatch => {
 SignIn.propTypes = {
   authError: PropTypes.string,
   auth: PropTypes.object.isRequired,
+  onSignIn: PropTypes.func.isRequired,
 }
 
 export default connect(
