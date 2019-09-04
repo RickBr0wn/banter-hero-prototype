@@ -8,6 +8,10 @@ body {
   background: #fff000;
 }
 
+header {
+  position: fixed !important;
+}
+
 .container {
   display: flex;
   justify-content: center;
