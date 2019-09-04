@@ -6,14 +6,14 @@ import { Redirect } from 'react-router-dom'
 import { createConversation } from '../Store/Actions/conversationActions'
 import moment from 'moment'
 
-const ProjectDetails = props => {
-  const { project, auth, id, onCreateConversation } = props
-  console.log(project)
+const ProjectDetails = ({ project, auth, id, onCreateConversation }) => {
   const [conversation, setConversation] = React.useState('')
 
   if (!auth.uid) return <Redirect to="/signin" />
+
   if (project) {
     const dateAndTime = moment(project.createdAt.toDate()).calendar()
+
     return (
       <div className="container" key={id}>
         <h5>** projectDetail</h5>
@@ -73,6 +73,7 @@ const ProjectDetails = props => {
                   name="body"
                   onChange={e => setConversation(e.target.value)}
                   value={conversation}
+                  className="detail-text-input"
                 />
                 <button type="submit">GO</button>
               </form>
