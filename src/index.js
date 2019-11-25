@@ -15,22 +15,21 @@ import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from './Store/Config/fbConfig'
 
-const reduxDevToolsExtension =
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+const composeWithReduxDevToolsExtension =
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 const rootElement = document.getElementById('root')
 
 const store = createStore(
   rootReducer,
-  compose(
+  composeWithReduxDevToolsExtension(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
     reduxFirestore(fbConfig),
     reactReduxFirebase(fbConfig, {
       useFirestoreForProfile: true,
       userProfile: 'users',
       attachAuthIsReady: true,
-    }),
-    reduxDevToolsExtension
+    })
   )
 )
 
