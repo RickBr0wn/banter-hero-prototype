@@ -19,7 +19,12 @@ const Navbar = ({ auth, profile }) => {
   return (
     <header>
       <Link to="/" className="logo">
-        Banter Hero
+        <div>
+          <span role="img" aria-label="laughing">
+            😂
+          </span>
+          Banter Hero
+        </div>
       </Link>
       <nav className={isActive ? 'active' : ''}>{links}</nav>
       <div onClick={() => setIsActive(!isActive)} className="menu-toggle">
